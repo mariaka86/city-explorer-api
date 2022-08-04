@@ -1,12 +1,18 @@
 
 
-# city-explorer-api
 
-**Author**: Your Name Goes Here
+**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+
+## WRRC Image
+https://drive.google.com/file/d/1ZefwYWAZr2JwQL695VcItRyiJTwbHnI7/view?usp=sharing
+# Project Name
+
+**Author**: Mary Kariuki
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 Ever wanted to see the weather before you traveled to a certain location?
+
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
@@ -20,6 +26,7 @@ Ever wanted to see the weather before you traveled to a certain location?
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
 Time Estimates
 
 
@@ -34,9 +41,33 @@ Finish time: next day
 Actual time needed to complete: 30 minutes
 
 
+Name of feature: ________________________________
 
+Estimate of time needed to complete: _____
 
+Start time: _____
 
+Finish time: _____
+
+Actual time needed to complete: _____
+Name of feature: ________________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+Name of feature: ________________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
 
 Name of feature: ________________________________
 
@@ -49,7 +80,15 @@ Finish time: _____
 Actual time needed to complete: _____
 
 
+Name of feature: ________________________________
 
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
 
 Name of feature: ________________________________
 
@@ -60,3 +99,4 @@ Start time: _____
 Finish time: _____
 
 Actual time needed to complete: _____
+
