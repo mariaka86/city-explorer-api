@@ -23,20 +23,26 @@ app.get ('/',(request,response)=>{
 
 
 // add weather route
-app.get('./weather', (request,response,next)=>{
+app.get('/weather', (request,response,next)=>{
+  console.log('request', request.query);
   try{
     let searchQuery= request.query.searchQuery;
-    // user has to enter the city we have data for
+    // // user has to enter the city we have data for
     console.log('searchQuery',searchQuery);
     let lat = request.query.lat;
+    console.log('lat',request.query.lat);
     let lon= request.query.lon;
     let temp = request.query.temp;
     let cityData = data.find(city => city.city_name=== searchQuery);
+    console.log ('citydata',cityData);
     let lonLoc = data.find(lonLoc=>lonLoc.lon=== lon);
+    console.log('lonLoc',lon);
     let latLoc = data.find(latLoc=>latLoc.lat ===lat);
     let tempLoc = data.find(tempLoc=>tempLoc.temp === temp);
-    response.send =(`The temperature in ${searchQuery} is ${tempLoc}`);
-    return(new Forecast(cityData,lonLoc,latLoc, tempLoc));
+    let dataToSend=(new Forecast(cityData,lonLoc,latLoc, tempLoc));
+    console.log ('datatosend work',dataToSend);
+    response.status(200).send(cityData,lonLoc,latLoc, tempLoc,dataToSend);
+
     // if user doesn't select the predetermined city throw an error
 
   } catch(error){
