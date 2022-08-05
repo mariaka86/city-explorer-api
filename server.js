@@ -1,68 +1,34 @@
 'use strict';
 console.log ('server is connected to js');
-//killall -9 node
-// REQUIRE
-const express=require('express');
+
+require('dotenv');
+const express = require('express');
 const cors = require('cors');
-require ('dotenv').config();
-//getting data from data file
-let data = require('./data/weather.json');
-// const{response} = require ('express');
-// Use
+// app.use(cors());
+const weather = require('./modules/weather.js');
+const axios = require('axios');
 const app = express();
-app.use (cors());
-// if port wont work in 3001(in env file) go to 3002
 const PORT = process.env.PORT || 3002;
-/// verifying server
-app.get ('/',(request,response)=>{
-
-  response.send ('server is working?');
-
-});
 
 
+app.get('/weather', weatherHandler);
 
-// add weather route
-app.get('/weather', (request,response,next)=>{
-  console.log('request', request.query);
+async function weatherHandler(request, response,next) {
   try{
-    let searchQuery= request.query.searchQuery;
-    // // user has to enter the city we have data for
-    console.log('searchQuery',searchQuery);
-    let lat = request.query.lat;
-    console.log('lat',request.query.lat);
-    let lon= request.query.lon;
-    let temp = request.query.temp;
-    let cityData = data.find(city => city.city_name=== searchQuery);
-    console.log ('citydata',cityData);
-    let lonLoc = data.find(lonLoc=>lonLoc.lon=== lon);
-    console.log('lonLoc',lon);
-    let latLoc = data.find(latLoc=>latLoc.lat ===lat);
-    let tempLoc = data.find(tempLoc=>tempLoc.temp === temp);
-    let dataToSend=(new Forecast(cityData,lonLoc,latLoc, tempLoc));
-    console.log ('datatosend work',dataToSend);
-    response.status(200).send(cityData,lonLoc,latLoc, tempLoc,dataToSend);
+  let {lat,lon} = request.query;
+  // const lat = weather.find(city =>city.lat === lat);
+  // const lon = weather.find(city =>city.lon === lon);
+  let summaries= await axios.get(lat,lon)
 
-    // if user doesn't select the predetermined city throw an error
+  // then(summaries => response.send(summaries))
 
-  } catch(error){
-    response.status(500).send ('invalid location');
 
+    // const summaries =  response.status(200).send(summaries);
+  }catch(error){
+    console.log(error);
+    response.status(500).send('Sorry. Something went wrong!');
     next(error);
   }
-});
-app.get ('*',(request,response)=>{
-  response.send ('Error that route was not found' );
-});
-
-
-class Forecast{
-  constructor (forecastObject){
-    console.log('forecastObject',forecastObject);
-    this.datetime = forecastObject.date;
-    this.description= forecastObject.description;
-  }
-
 }
 
-app.listen(PORT,()=>console.log (`server is running on ${PORT}`));
+app.listen(PORT,() => console.log(`Server up on ${PORT}`));
