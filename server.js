@@ -45,11 +45,12 @@ app.get ('/',(request,response)=>{
 // }
 
 
+
 // add weather route
 app.get('/weather', async(request,response,next) => {
   console.log('request', request.query);
   try{
-    // let searchQuery= request.query.searchQuery;
+    let searchQuery= request.query.searchQuery;
     // // user has to enter the city we have data for
     // console.log('searchQuery',searchQuery);
     let lat = request.query.lat;
@@ -86,11 +87,12 @@ class Forecast{
   constructor (forecastObject){
     console.log('forecastObject',forecastObject);
     this.date= forecastObject.valid_date;
-    this.description= forecastObject.description;
+    this.description= forecastObject.weather.description;
     this.temp = forecastObject.temp;
     this.min_temp = forecastObject.min_temp;
     this.max_temp =forecastObject.max_temp;
-
+    this.icon = forecastObject.weather.icon;
+    console.log('description',forecastObject.weather.description);
   }
 
 }
