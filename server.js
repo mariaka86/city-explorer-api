@@ -2,12 +2,12 @@
 console.log ('server is connected to js');
 //killall -9 node
 // REQUIRE
-const express=require('express');
+const express = require('express');
 const cors = require('cors');
 require ('dotenv').config();
 //getting data from data file
 // let data = require('./data/weather.json');
-const axios= require('axios');
+const axios = require('axios');
 // const{response} = require ('express');
 // Use
 const app = express();
@@ -73,7 +73,7 @@ class Film{
     this.title = filmObject.title;
     this.overview = filmObject.overview;
     this.release_date = filmObject.release_date
-    this.src = filmObject.poster_path ? filmObject.poster_path : 'myImage.jpg' ;
+    this.image_url = `https://image.tmdb.org/t/p/w500${filmObject.poster_path}` ;
     console.log('title',filmObject.title)
   }
 }
@@ -87,7 +87,7 @@ class Forecast{
     this.temp = forecastObject.temp;
     this.min_temp = forecastObject.min_temp;
     this.max_temp =forecastObject.max_temp;
-    this.icon = forecastObject.weather.icon;
+    this.icon = `https://www.weatherbit.io/static/img/icons/${forecastObject.weather.icon}.png`;
     console.log('description',forecastObject.weather.description);
   }
 
