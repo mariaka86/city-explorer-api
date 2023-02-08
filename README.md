@@ -1,16 +1,17 @@
 
-
-
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## WRRC Image
-https://drive.google.com/file/d/1ZefwYWAZr2JwQL695VcItRyiJTwbHnI7/view?usp=sharing
+
+<https://drive.google.com/file/d/1ZefwYWAZr2JwQL695VcItRyiJTwbHnI7/view?usp=sharing>
+
 # Project Name
 
 **Author**: Mary Kariuki
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
+
 Ever wanted to see the weather before you traveled to a certain location?
 
 ## Getting Started
@@ -29,10 +30,9 @@ Ever wanted to see the weather before you traveled to a certain location?
 
 Time Estimates
 
+Name of feature: **Setup**____________________________
 
-Name of feature: __Setup______________________________
-
-Estimate of time needed to complete: __30 minutes___
+Estimate of time needed to complete: **30 minutes**_
 
 Start time: 08/222
 
@@ -40,7 +40,6 @@ Finish time: next day
 
 Actual time needed to complete: 30 minutes
 
-
 Name of feature: ________________________________
 
 Estimate of time needed to complete: _____
@@ -79,7 +78,6 @@ Finish time: _____
 
 Actual time needed to complete: _____
 
-
 Name of feature: ________________________________
 
 Estimate of time needed to complete: _____
@@ -99,4 +97,3 @@ Start time: _____
 Finish time: _____
 
 Actual time needed to complete: _____
-
