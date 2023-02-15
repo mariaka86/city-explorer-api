@@ -49,23 +49,22 @@ app.get('/food', async(request,response,next)=>{
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Auth:YELP_API_KEY
+      Authorization: `Bearer ${YELP_API_KEY}`
   
     }
     
   };
- 
   try{
 
-    let url =`https://api.yelp.com/v3/businesses/search?latitude=37.786882&longitude=-122.399972&key=${YELP_API_KEY}&sort_by=distance&limit=10&format=json`
-    let cityRestaurant = await axios.get(url,options)
+    let url =`https://api.yelp.com/v3/businesses/search?latitude=37.786882&longitude=-122.399972&sort_by=distance&limit=10&format=json`
+    let yelpData = await axios.get(url,options)
     console.log('!!!!!!!!!!!!!!!!!!1',options)
 
-    let restaurantArray = cityRestaurant.data.data.businesses.map(restaurantData => new Restaurant(restaurantData));
+    let theRestaurant = yelpData.data.businesses.map(yelpData => new Restaurant(yelpData));
     
-    console.log ('!!!!!!!!!!!!!!!!!!!!!!!!!!!restaurantarray', restaurantArray)
+    console.log ('!!!!!!!!!!!!!!!!!!!!!!!!!!!restaurantarray', theRestaurant)
     
-    response.status(200).send(restaurantArray);
+    response.status(200).send(theRestaurant);
 
   }catch(error){
     console.log(error)
@@ -112,7 +111,13 @@ class Film{
 class Restaurant{
   constructor(restaurauntObject){
     console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!restaurauntObject',restaurauntObject)
+    this.image_url=restaurauntObject.image_url;
     this.name = restaurauntObject.name;
+    this.address = restaurauntObject.location.display_address.join('. ')
+    this.hours = !restaurauntObject.is_closed ? 'Open': 'Closed';
+    this.rating = restaurauntObject.rating;
+    this.price = restaurauntObject.price|| 'Not Available';
+
   }
 }
 
