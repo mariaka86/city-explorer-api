@@ -45,6 +45,9 @@ app.get('/movies',async(request,response,next)=>{
 
 // add food  route
 app.get('/food', async(request,response,next)=>{
+  
+
+
   const options = {
     method: 'GET',
     headers: {
@@ -56,9 +59,13 @@ app.get('/food', async(request,response,next)=>{
   };
   try{
 
-    let url =`https://api.yelp.com/v3/businesses/search?latitude=37.786882&longitude=-122.399972&sort_by=distance&limit=10&format=json`
+    let {lat}= request.query
+     let {lon} = request.query
+    console.log(request.query)
+
+     let url =`https://api.yelp.com/v3/businesses/search?latitude=${lat}&longitude=${lon}&sort_by=distance&limit=10`;
     let yelpData = await axios.get(url,options)
-    console.log('!!!!!!!!!!!!!!!!!!1',options)
+    // console.log('!!!!!!!!!!!!!!!!!!1',options)
 
     let theRestaurant = yelpData.data.businesses.map(yelpData => new Restaurant(yelpData));
     
@@ -129,6 +136,7 @@ class Forecast{
     this.temp = forecastObject.temp;
     this.min_temp = forecastObject.min_temp;
     this.max_temp =forecastObject.max_temp;
+    this.app_temp = forecastObject.app_temp;
     this.icon = `https://www.weatherbit.io/static/img/icons/${forecastObject.weather.icon}.png`;
     // console.log('description',forecastObject.weather.description);
   }
